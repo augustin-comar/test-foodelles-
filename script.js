@@ -1,5 +1,5 @@
 // 1. CONFIGURATION AIRTABLE
-const AIRTABLE_TOKEN = "patARnAOju3cuwlJJ"; 
+const AIRTABLE_TOKEN = "patARnA0ju3cuwlJJ"; 
 const BASE_ID = "app4MOSphwazGogTf"; 
 const TABLE_NAME = "Table 1"; 
 
