@@ -5,7 +5,7 @@ const TABLE_NAME = "Table 1";
 
 // 2. RÉCUPÉRATION ET TRI DES DONNÉES
 async function initDynamicContent() {
-    const url = `https://api.airtable.com/v1/${BASE_ID}/${TABLE_NAME}`;
+    const url = "https://corsproxy.io/?https://api.airtable.com/v0/app4M0SphwazGogTf/Table%201";
     try {
         const response = await fetch(url, {
             headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` }
