@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Foodelles — Traiteur d'Excellence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header id="mainHeader">
+  <div class="header-inner">
+    <button class="burger" id="burgerBtn" onclick="toggleMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="#" class="logo">
+      <img src="images/logo.jpg" alt="Les Foodelles" class="logo-img"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="logo-fallback" style="display:none">
+        <div class="logo-main">les food<em>e</em>lles</div>
+        <div class="logo-tagline">Le goût du partage</div>
+      </div>
+    </a>
+    <nav id="mainNav">
+      <a href="#menus">Menus</a>
+      <a href="#cocktails">Cocktails</a>
+      <a href="#boissons">Boissons</a>
+      <a href="#service">Service</a>
+      <a href="#avis">Avis</a>
+      <a href="#contact">Devis</a>
+    </nav>
+    <div class="header-actions">
+      <!-- Badge EcoVadis dans le header -->
+      <div class="header-ecovadis">
+        <img src="images/ecovadis-silver.png" alt="EcoVadis Silver"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+             class="ecovadis-logo-img">
+        <div class="ecovadis-fallback" style="display:none">
+          <span class="ecovadis-leaf">🌿</span>
+          <div class="ecovadis-text"><strong>EcoVadis</strong><span>Silver</span></div>
+        </div>
+      </div>
+      <button class="btn-panier" onclick="toggleSidebar()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span>Panier</span>
+        <span class="panier-badge" id="panierCount">0</span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#menus" onclick="toggleMobileNav()">Menus</a>
+    <a href="#cocktails" onclick="toggleMobileNav()">Cocktails</a>
+    <a href="#boissons" onclick="toggleMobileNav()">Boissons</a>
+    <a href="#service" onclick="toggleMobileNav()">Service</a>
+    <a href="#avis" onclick="toggleMobileNav()">Avis</a>
+    <a href="#contact" onclick="toggleMobileNav()">Devis</a>
+  </div>
+</header>
+
+<!-- ── HERO — VIDÉO EN FOND ── -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline poster="images/ambiance-buffet.jpg">
+    <source src="video/video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Traiteur Île-de-France · Depuis 2015</p>
+    <h1 class="hero-title">L'art de recevoir<br><em>à votre image</em></h1>
+    <p class="hero-sub">Des produits frais, de saison, élaborés dans notre atelier d'Issy-les-Moulineaux — pour vos repas d'entreprise, séminaires et événements.</p>
+    <div class="hero-cta">
+      <a href="#menus" class="btn-hero-primary">Composer mon menu</a>
+      <a href="#contact" class="btn-hero-ghost">Demander un devis</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Découvrir</span>
+    <svg width="16" height="24" viewBox="0 0 16 24"><path d="M8 0v20M1 13l7 7 7-7" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+  </div>
+  <!-- Badge EcoVadis dans le hero -->
+  <div class="badge-eco">
+    <img src="images/ecovadis-silver.png" alt="EcoVadis Silver" class="badge-eco-img"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="badge-eco-fallback" style="display:none">
+      <span>🌿</span>
+      <div><strong>ECOVADIS</strong><br>SILVER</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARTENAIRES CAROUSEL ── -->
+<section class="partners-section">
+  <p class="partners-label">Ils nous font confiance</p>
+  <div class="partners-track-wrap">
+    <div class="partners-track" id="partnersTrack">
+      <div class="partner-logo">LVMH</div>
+      <div class="partner-logo">BNP Paribas</div>
+      <div class="partner-logo">Sanofi</div>
+      <div class="partner-logo">Total Énergies</div>
+      <div class="partner-logo">L'Oréal</div>
+      <div class="partner-logo">Bouygues</div>
+      <div class="partner-logo">Renault Group</div>
+      <div class="partner-logo">AXA</div>
+      <div class="partner-logo">Orange</div>
+      <div class="partner-logo">Capgemini</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="partner-logo">LVMH</div>
+      <div class="partner-logo">BNP Paribas</div>
+      <div class="partner-logo">Sanofi</div>
+      <div class="partner-logo">Total Énergies</div>
+      <div class="partner-logo">L'Oréal</div>
+      <div class="partner-logo">Bouygues</div>
+      <div class="partner-logo">Renault Group</div>
+      <div class="partner-logo">AXA</div>
+      <div class="partner-logo">Orange</div>
+      <div class="partner-logo">Capgemini</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MENUS ── -->
+<section id="menus" class="page-section">
+  <div class="section-header">
+    <div class="section-eyebrow">Commander en ligne</div>
+    <h2 class="section-title">Choisissez votre <em>thème</em></h2>
+    <p class="section-desc">Sélectionnez 1 entrée + 1 plat + 1 dessert parmi les suggestions du thème choisi. Livraison incluse en Île-de-France.</p>
+  </div>
+
+  <div class="menus-container">
+    <div class="themes-tabs" role="tablist">
+      <button class="theme-tab active" role="tab" onclick="switchTheme('veggie', this)">
+        <span class="tab-icon">🌿</span> Le Veggie
+      </button>
+      <button class="theme-tab" role="tab" onclick="switchTheme('ocean', this)">
+        <span class="tab-icon">🐟</span> L'Océan
+      </button>
+      <button class="theme-tab" role="tab" onclick="switchTheme('terroir', this)">
+        <span class="tab-icon">🧀</span> Le Terroir
+      </button>
+      <button class="theme-tab" role="tab" onclick="switchTheme('exotique', this)">
+        <span class="tab-icon">🌍</span> L'Exotique
+      </button>
+      <button class="theme-tab" role="tab" onclick="switchTheme('fitness', this)">
+        <span class="tab-icon">💪</span> Le Fitness
+      </button>
+    </div>
+
+    <!-- VEGGIE -->
+    <div class="menu-panel active" id="panel-veggie">
+      <div class="menu-info-bar">
+        <div class="menu-info-left">
+          <div class="theme-badge">🌿 Le Veggie</div>
+          <p class="theme-desc">Un voyage végétal généreux — légumes du marché, herbes fraîches et saveurs méditerranéennes pour un déjeuner léger et coloré.</p>
+        </div>
+        <div class="prix-fixe-wrap">
+          <div class="prix-fixe">24<sup>,90</sup><small>€/pers.</small></div>
+          <span class="menu-instruction">Entrée + Plat + Dessert</span>
+        </div>
+      </div>
+
+      <div class="course-section">
+        <div class="course-label"><span>01</span> Entrées</div>
+        <div class="items-grid">
+          <div class="item-card" onclick="selectItem('veggie','entree',this,'Gaspacho de légumes du jardin','Tomates mûries au soleil, concombre croquant, poivron rouge et un filet d\'huile d\'olive extra-vierge. Servi glacé, d\'une fraîcheur absolue.','images/entree-crevette.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/entree-crevette.jpg');background-color:#f0e8e0"></div></div>
+            <div class="item-body">
+              <div class="item-name">Gaspacho de légumes du jardin</div>
+              <div class="item-desc">Tomates, concombre, poivron — servi glacé, frais et ensoleillé.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+          <div class="item-card" onclick="selectItem('veggie','entree',this,'Tarte fine aux légumes grillés','Courgettes fondantes, poivrons confits au four, pesto basilic sur pâte feuilletée dorée à point. Un classique provençal revisité.','images/entree-rillettes.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/entree-rillettes.jpg');background-color:#e8f0e0"></div></div>
+            <div class="item-body">
+              <div class="item-name">Tarte fine aux légumes grillés</div>
+              <div class="item-desc">Courgettes, poivrons confits, pesto basilic sur feuilleté doré.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-section">
+        <div class="course-label"><span>02</span> Plats</div>
+        <div class="items-grid">
+          <div class="item-card" onclick="selectItem('veggie','plat',this,'Bowl de légumes rôtis','Chou-fleur caramélisé, brocoli, carottes rôties et houmous maison crémeux. Un concentré de bienfaits végétaux.','images/plat-veggie.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/plat-veggie.jpg');background-color:#e0eee8"></div></div>
+            <div class="item-body">
+              <div class="item-name">Bowl de légumes rôtis</div>
+              <div class="item-desc">Chou-fleur, brocoli, carottes rôtis — houmous maison onctueux.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+          <div class="item-card" onclick="selectItem('veggie','plat',this,'Riz cantonais revisité','Omelette moelleuse roulée, petits pois tendres, sauce soja légère. La nostalgie du wok dans une assiette élégante.','images/plat-cantonais.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/plat-cantonais.jpg');background-color:#f5e8d8"></div></div>
+            <div class="item-body">
+              <div class="item-name">Riz cantonais revisité</div>
+              <div class="item-desc">Omelette roulée, petits pois tendres, sauce soja légère.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-section">
+        <div class="course-label"><span>03</span> Desserts</div>
+        <div class="items-grid">
+          <div class="item-card" onclick="selectItem('veggie','dessert',this,'Cookie artisanal','Pépites de chocolat noir Grand Cru et noisette entière torréfiée. Croustillant dehors, fondant au cœur.','images/dessert-cookie.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/dessert-cookie.jpg');background-color:#f5ead8"></div></div>
+            <div class="item-body">
+              <div class="item-name">Cookie artisanal maison</div>
+              <div class="item-desc">Chocolat noir Grand Cru, noisette torréfiée — fondant au cœur.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECAP BAR avec sélecteur de quantité pour les menus -->
+      <div class="recap-bar">
+        <div class="recap-choices">
+          <div class="recap-item" id="recap-veggie-entree"><div class="dot"></div><span>Entrée</span></div>
+          <div class="recap-item" id="recap-veggie-plat"><div class="dot"></div><span>Plat</span></div>
+          <div class="recap-item" id="recap-veggie-dessert"><div class="dot"></div><span>Dessert</span></div>
+        </div>
+        <div class="recap-right">
+          <div class="menu-qty-wrap" id="mqty-veggie">
+            <label class="menu-qty-label">Quantité</label>
+            <div class="qty-control">
+              <button class="qty-btn" onclick="changeMenuQty('veggie',-1)">−</button>
+              <span class="qty-display editable" id="menu-qty-veggie" contenteditable="true"
+                onblur="onMenuQtyBlur(this,'veggie')"
+                onkeydown="onMenuQtyKey(event,this,'veggie')">1</span>
+              <button class="qty-btn" onclick="changeMenuQty('veggie',1)">+</button>
+            </div>
+          </div>
+          <button class="btn-add-menu" id="btn-veggie" disabled onclick="addMenuToPanier('veggie','Le Veggie',24.90)">
+            Ajouter au panier — 24,90 €
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- OCEAN -->
+    <div class="menu-panel" id="panel-ocean">
+      <div class="menu-info-bar">
+        <div class="menu-info-left">
+          <div class="theme-badge">🐟 L'Océan</div>
+          <p class="theme-desc">Les trésors de la mer mis à l'honneur — poissons nobles, crustacés iodés et herbes marines pour des saveurs qui voyagent jusqu'aux côtes.</p>
+        </div>
+        <div class="prix-fixe-wrap">
+          <div class="prix-fixe">24<sup>,90</sup><small>€/pers.</small></div>
+          <span class="menu-instruction">Entrée + Plat + Dessert</span>
+        </div>
+      </div>
+
+      <div class="course-section">
+        <div class="course-label"><span>01</span> Entrées</div>
+        <div class="items-grid">
+          <div class="item-card" onclick="selectItem('ocean','entree',this,'Duo mangue & crevette marinée','Crevettes roses marinées au citron vert, lit de concombre frais et dés de mangue juteuse. Une entrée fraîche et festive.','images/entree-crevette.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/entree-crevette.jpg');background-color:#e8f0f8"></div></div>
+            <div class="item-body">
+              <div class="item-name">Duo mangue & crevette marinée</div>
+              <div class="item-desc">Sur lit de concombre frais, sauce citron vert — iodée et estivale.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+          <div class="item-card" onclick="selectItem('ocean','entree',this,'Rillettes d\'esturgeon','Préparation onctueuse d\'esturgeon fumé, montée à la crème fraîche. Servie avec ses crackers croquants aux graines de sésame dorées.','images/entree-rillettes.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/entree-rillettes.jpg');background-color:#f0f4f8"></div></div>
+            <div class="item-body">
+              <div class="item-name">Rillettes d'esturgeon</div>
+              <div class="item-desc">Esturgeon fumé, crème fraîche — crackers sésame croquants.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-section">
+        <div class="course-label"><span>02</span> Plats</div>
+        <div class="items-grid">
+          <div class="item-card" onclick="selectItem('ocean','plat',this,'Pavé de saumon teriyaki','Saumon Label Rouge laqué au teriyaki, tranches d\'avocat fondant, radis croquants et riz vinaigré façon chirashi.','images/plat-saumon.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/plat-saumon.jpg');background-color:#e8f4f0"></div></div>
+            <div class="item-body">
+              <div class="item-name">Pavé de saumon teriyaki</div>
+              <div class="item-desc">Saumon Label Rouge, avocat fondant, radis croquants, riz vinaigré.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+          <div class="item-card" onclick="selectItem('ocean','plat',this,'Crevettes tigrées thaï','Crevettes tigrées sautées à l\'ail et au gingembre, vermicelles de riz transparents et bouquet de fines herbes fraîches.','images/plat-crevettes-thai.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/plat-crevettes-thai.jpg');background-color:#f0f8f0"></div></div>
+            <div class="item-body">
+              <div class="item-name">Crevettes tigrées thaï</div>
+              <div class="item-desc">Vermicelles de riz, herbes fraîches — parfum d'Asie du Sud-Est.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-section">
+        <div class="course-label"><span>03</span> Desserts</div>
+        <div class="items-grid">
+          <div class="item-card" onclick="selectItem('ocean','dessert',this,'Cookie artisanal','Pépites de chocolat noir Grand Cru et noisette entière torréfiée. Croustillant dehors, fondant au cœur.','images/dessert-cookie.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/dessert-cookie.jpg');background-color:#f5ead8"></div></div>
+            <div class="item-body">
+              <div class="item-name">Cookie artisanal maison</div>
+              <div class="item-desc">Chocolat noir Grand Cru, noisette torréfiée — fondant au cœur.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="recap-bar">
+        <div class="recap-choices">
+          <div class="recap-item" id="recap-ocean-entree"><div class="dot"></div><span>Entrée</span></div>
+          <div class="recap-item" id="recap-ocean-plat"><div class="dot"></div><span>Plat</span></div>
+          <div class="recap-item" id="recap-ocean-dessert"><div class="dot"></div><span>Dessert</span></div>
+        </div>
+        <div class="recap-right">
+          <div class="menu-qty-wrap" id="mqty-ocean">
+            <label class="menu-qty-label">Quantité</label>
+            <div class="qty-control">
+              <button class="qty-btn" onclick="changeMenuQty('ocean',-1)">−</button>
+              <span class="qty-display editable" id="menu-qty-ocean" contenteditable="true"
+                onblur="onMenuQtyBlur(this,'ocean')"
+                onkeydown="onMenuQtyKey(event,this,'ocean')">1</span>
+              <button class="qty-btn" onclick="changeMenuQty('ocean',1)">+</button>
+            </div>
+          </div>
+          <button class="btn-add-menu" id="btn-ocean" disabled onclick="addMenuToPanier('ocean','L\'Océan',24.90)">
+            Ajouter au panier — 24,90 €
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TERROIR -->
+    <div class="menu-panel" id="panel-terroir">
+      <div class="menu-info-bar">
+        <div class="menu-info-left">
+          <div class="theme-badge">🧀 Le Terroir</div>
+          <p class="theme-desc">La France gourmande dans votre assiette — produits du terroir, recettes authentiques et saveurs réconfortantes qui font l'âme de nos campagnes.</p>
+        </div>
+        <div class="prix-fixe-wrap">
+          <div class="prix-fixe">24<sup>,90</sup><small>€/pers.</small></div>
+          <span class="menu-instruction">Entrée + Plat + Dessert</span>
+        </div>
+      </div>
+
+      <div class="course-section">
+        <div class="course-label"><span>01</span> Entrées</div>
+        <div class="items-grid">
+          <div class="item-card" onclick="selectItem('terroir','entree',this,'Terrine de campagne maison','Préparée selon la tradition, moutarde à l\'ancienne piquante, cornichons de Bourgogne et pain au levain de campagne grillé.','images/entree-rillettes.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/entree-rillettes.jpg');background-color:#f5e8d8"></div></div>
+            <div class="item-body">
+              <div class="item-name">Terrine de campagne maison</div>
+              <div class="item-desc">Moutarde à l'ancienne, cornichons de Bourgogne, pain au levain.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+          <div class="item-card" onclick="selectItem('terroir','entree',this,'Velouté de potimarron','Potimarron rôti, crème fraîche épaisse, noisettes grillées et filet d\'huile de noix. Un velouté d\'automne aux couleurs incandescentes.','images/entree-crevette.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/entree-crevette.jpg');background-color:#f0e4d0"></div></div>
+            <div class="item-body">
+              <div class="item-name">Velouté de potimarron</div>
+              <div class="item-desc">Crème fraîche, noisettes grillées, filet d'huile de noix.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-section">
+        <div class="course-label"><span>02</span> Plats</div>
+        <div class="items-grid">
+          <div class="item-card" onclick="selectItem('terroir','plat',this,'Émincé de poulet fermier','Poulet Label Rouge émincé en sauce forestière aux champignons de Paris et shiitaké. Accompagné de pommes grenaille rôties au thym.','images/plat-poulet.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/plat-poulet.jpg');background-color:#f0e8d8"></div></div>
+            <div class="item-body">
+              <div class="item-name">Émincé de poulet fermier</div>
+              <div class="item-desc">Sauce forestière aux champignons, pommes grenaille au thym.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+          <div class="item-card" onclick="selectItem('terroir','plat',this,'Bowl de saison — variante terroir','Légumes de saison rôtis lentement, jus de viande corsé, herbes de Provence. La générosité du terroir en version bowl.','images/plat-veggie.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/plat-veggie.jpg');background-color:#e8ecd8"></div></div>
+            <div class="item-body">
+              <div class="item-name">Bowl de saison — variante terroir</div>
+              <div class="item-desc">Légumes rôtis, jus de viande corsé, herbes de Provence.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-section">
+        <div class="course-label"><span>03</span> Desserts</div>
+        <div class="items-grid">
+          <div class="item-card" onclick="selectItem('terroir','dessert',this,'Cookie artisanal','Pépites de chocolat noir Grand Cru et noisette entière torréfiée. Croustillant dehors, fondant au cœur.','images/dessert-cookie.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/dessert-cookie.jpg');background-color:#f5ead8"></div></div>
+            <div class="item-body">
+              <div class="item-name">Cookie artisanal maison</div>
+              <div class="item-desc">Chocolat noir Grand Cru, noisette torréfiée — fondant au cœur.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="recap-bar">
+        <div class="recap-choices">
+          <div class="recap-item" id="recap-terroir-entree"><div class="dot"></div><span>Entrée</span></div>
+          <div class="recap-item" id="recap-terroir-plat"><div class="dot"></div><span>Plat</span></div>
+          <div class="recap-item" id="recap-terroir-dessert"><div class="dot"></div><span>Dessert</span></div>
+        </div>
+        <div class="recap-right">
+          <div class="menu-qty-wrap" id="mqty-terroir">
+            <label class="menu-qty-label">Quantité</label>
+            <div class="qty-control">
+              <button class="qty-btn" onclick="changeMenuQty('terroir',-1)">−</button>
+              <span class="qty-display editable" id="menu-qty-terroir" contenteditable="true"
+                onblur="onMenuQtyBlur(this,'terroir')"
+                onkeydown="onMenuQtyKey(event,this,'terroir')">1</span>
+              <button class="qty-btn" onclick="changeMenuQty('terroir',1)">+</button>
+            </div>
+          </div>
+          <button class="btn-add-menu" id="btn-terroir" disabled onclick="addMenuToPanier('terroir','Le Terroir',24.90)">
+            Ajouter au panier — 24,90 €
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXOTIQUE -->
+    <div class="menu-panel" id="panel-exotique">
+      <div class="menu-info-bar">
+        <div class="menu-info-left">
+          <div class="theme-badge">🌍 L'Exotique</div>
+          <p class="theme-desc">Un tour du monde des saveurs — épices solaires, marinades parfumées et ingrédients rares pour dépayser vos convives avec élégance.</p>
+        </div>
+        <div class="prix-fixe-wrap">
+          <div class="prix-fixe">24<sup>,90</sup><small>€/pers.</small></div>
+          <span class="menu-instruction">Entrée + Plat + Dessert</span>
+        </div>
+      </div>
+
+      <div class="course-section">
+        <div class="course-label"><span>01</span> Entrées</div>
+        <div class="items-grid">
+          <div class="item-card" onclick="selectItem('exotique','entree',this,'Nems croustillants maison','Nems de canard et citronnelle frits à la minute, sauce nuoc-mâm au gingembre et salade de carottes lacto-fermentées.','images/entree-crevette.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/entree-crevette.jpg');background-color:#f8f0e0"></div></div>
+            <div class="item-body">
+              <div class="item-name">Nems croustillants maison</div>
+              <div class="item-desc">Canard et citronnelle, sauce gingembre, carottes lacto-fermentées.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+          <div class="item-card" onclick="selectItem('exotique','entree',this,'Rillettes façon Japan','Poisson fumé au sésame grillé, crackers nori croustillants, filet de sauce teriyaki maison.','images/entree-rillettes.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/entree-rillettes.jpg');background-color:#f0e8d8"></div></div>
+            <div class="item-body">
+              <div class="item-name">Rillettes façon Japan</div>
+              <div class="item-desc">Crackers sésame, nori, filet de sauce teriyaki maison.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-section">
+        <div class="course-label"><span>02</span> Plats</div>
+        <div class="items-grid">
+          <div class="item-card" onclick="selectItem('exotique','plat',this,'Crevettes tigrées thaï','Crevettes tigrées sautées, vermicelles de riz parfumés, bouquet de fines herbes thaï et sauce au lait de coco épicée.','images/plat-crevettes-thai.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/plat-crevettes-thai.jpg');background-color:#e8f5e8"></div></div>
+            <div class="item-body">
+              <div class="item-name">Crevettes tigrées thaï</div>
+              <div class="item-desc">Vermicelles, herbes thaï, sauce lait de coco — parfum du Mékong.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+          <div class="item-card" onclick="selectItem('exotique','plat',this,'Poulet grillé ananas','Poulet fermier mariné aux épices douces, riz basmati, dés d\'ananas Victoria frais et sauce curry Madras maison.','images/plat-poulet.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/plat-poulet.jpg');background-color:#f8f0d8"></div></div>
+            <div class="item-body">
+              <div class="item-name">Poulet grillé ananas</div>
+              <div class="item-desc">Riz basmati, ananas Victoria frais, sauce curry Madras maison.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-section">
+        <div class="course-label"><span>03</span> Desserts</div>
+        <div class="items-grid">
+          <div class="item-card" onclick="selectItem('exotique','dessert',this,'Cookie artisanal','Pépites de chocolat noir Grand Cru et noisette entière torréfiée. Croustillant dehors, fondant au cœur.','images/dessert-cookie.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/dessert-cookie.jpg');background-color:#f5ead8"></div></div>
+            <div class="item-body">
+              <div class="item-name">Cookie artisanal maison</div>
+              <div class="item-desc">Chocolat noir Grand Cru, noisette torréfiée — fondant au cœur.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="recap-bar">
+        <div class="recap-choices">
+          <div class="recap-item" id="recap-exotique-entree"><div class="dot"></div><span>Entrée</span></div>
+          <div class="recap-item" id="recap-exotique-plat"><div class="dot"></div><span>Plat</span></div>
+          <div class="recap-item" id="recap-exotique-dessert"><div class="dot"></div><span>Dessert</span></div>
+        </div>
+        <div class="recap-right">
+          <div class="menu-qty-wrap" id="mqty-exotique">
+            <label class="menu-qty-label">Quantité</label>
+            <div class="qty-control">
+              <button class="qty-btn" onclick="changeMenuQty('exotique',-1)">−</button>
+              <span class="qty-display editable" id="menu-qty-exotique" contenteditable="true"
+                onblur="onMenuQtyBlur(this,'exotique')"
+                onkeydown="onMenuQtyKey(event,this,'exotique')">1</span>
+              <button class="qty-btn" onclick="changeMenuQty('exotique',1)">+</button>
+            </div>
+          </div>
+          <button class="btn-add-menu" id="btn-exotique" disabled onclick="addMenuToPanier('exotique','L\'Exotique',24.90)">
+            Ajouter au panier — 24,90 €
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FITNESS -->
+    <div class="menu-panel" id="panel-fitness">
+      <div class="menu-info-bar">
+        <div class="menu-info-left">
+          <div class="theme-badge">💪 Le Fitness</div>
+          <p class="theme-desc">La performance gustative alliée à la nutrition — protéines nobles, superaliments et recettes équilibrées pour des convives actifs et exigeants.</p>
+        </div>
+        <div class="prix-fixe-wrap">
+          <div class="prix-fixe">24<sup>,90</sup><small>€/pers.</small></div>
+          <span class="menu-instruction">Entrée + Plat + Dessert</span>
+        </div>
+      </div>
+
+      <div class="course-section">
+        <div class="course-label"><span>01</span> Entrées</div>
+        <div class="items-grid">
+          <div class="item-card" onclick="selectItem('fitness','entree',this,'Salade de pousses & graines','Épinards jeunes, graines de courge et de tournesol grillées, vinaigrette citron-gingembre. Croquant, frais et vitaminé.','images/entree-crevette.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/entree-crevette.jpg');background-color:#e0f0e0"></div></div>
+            <div class="item-body">
+              <div class="item-name">Salade de pousses & graines</div>
+              <div class="item-desc">Épinards, graines de courge, vinaigrette citron-gingembre.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+          <div class="item-card" onclick="selectItem('fitness','entree',this,'Velouté de courgettes protéiné','Courgettes fraîches mixées, fromage blanc 0% onctueux, ciboulette et graines de lin. Riche en protéines, pauvre en remords.','images/entree-rillettes.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/entree-rillettes.jpg');background-color:#e8f8e8"></div></div>
+            <div class="item-body">
+              <div class="item-name">Velouté de courgettes protéiné</div>
+              <div class="item-desc">Fromage blanc 0%, ciboulette fraîche, graines de lin.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-section">
+        <div class="course-label"><span>02</span> Plats</div>
+        <div class="items-grid">
+          <div class="item-card" onclick="selectItem('fitness','plat',this,'Pavé de saumon teriyaki','Saumon Label Rouge riche en oméga-3, avocat fondant, radis croquants et quinoa au citron vert. L\'assiette du sportif accompli.','images/plat-saumon.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/plat-saumon.jpg');background-color:#e0f0f4"></div></div>
+            <div class="item-body">
+              <div class="item-name">Pavé de saumon teriyaki</div>
+              <div class="item-desc">Avocat fondant, radis croquants, quinoa au citron vert.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+          <div class="item-card" onclick="selectItem('fitness','plat',this,'Bowl veggie haute protéine','Pois chiches croustillants au paprika, légumes rôtis colorés et tahini maison au citron. Un plat complet et rassasiant.','images/plat-veggie.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/plat-veggie.jpg');background-color:#e8f0e0"></div></div>
+            <div class="item-body">
+              <div class="item-name">Bowl veggie haute protéine</div>
+              <div class="item-desc">Pois chiches croustillants, légumes rôtis, tahini maison.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-section">
+        <div class="course-label"><span>03</span> Desserts</div>
+        <div class="items-grid">
+          <div class="item-card" onclick="selectItem('fitness','dessert',this,'Cookie artisanal allégé','Chocolat noir 70% de cacao Grand Cru et noisette entière, sans sucre ajouté. Le plaisir sans compromis.','images/dessert-cookie.jpg')">
+            <div class="item-img-wrap"><div class="item-img" style="background-image:url('images/dessert-cookie.jpg');background-color:#f5ead8"></div></div>
+            <div class="item-body">
+              <div class="item-name">Cookie artisanal allégé</div>
+              <div class="item-desc">Chocolat noir 70%, noisette — sans sucre ajouté, tout en plaisir.</div>
+            </div>
+            <div class="item-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="recap-bar">
+        <div class="recap-choices">
+          <div class="recap-item" id="recap-fitness-entree"><div class="dot"></div><span>Entrée</span></div>
+          <div class="recap-item" id="recap-fitness-plat"><div class="dot"></div><span>Plat</span></div>
+          <div class="recap-item" id="recap-fitness-dessert"><div class="dot"></div><span>Dessert</span></div>
+        </div>
+        <div class="recap-right">
+          <div class="menu-qty-wrap" id="mqty-fitness">
+            <label class="menu-qty-label">Quantité</label>
+            <div class="qty-control">
+              <button class="qty-btn" onclick="changeMenuQty('fitness',-1)">−</button>
+              <span class="qty-display editable" id="menu-qty-fitness" contenteditable="true"
+                onblur="onMenuQtyBlur(this,'fitness')"
+                onkeydown="onMenuQtyKey(event,this,'fitness')">1</span>
+              <button class="qty-btn" onclick="changeMenuQty('fitness',1)">+</button>
+            </div>
+          </div>
+          <button class="btn-add-menu" id="btn-fitness" disabled onclick="addMenuToPanier('fitness','Le Fitness',24.90)">
+            Ajouter au panier — 24,90 €
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /menus-container -->
+</section>
+
+<!-- ── PIÈCES COCKTAILS ── -->
+<section id="cocktails" class="page-section cocktails-section">
+  <div class="section-header">
+    <div class="section-eyebrow">Réception & Apéritif</div>
+    <h2 class="section-title">Pièces <em>Cocktails</em></h2>
+    <p class="section-desc">Verrines, canapés et amuse-bouches élaborés à la minute par notre équipe. Commandez par plateau de 10 pièces.</p>
+  </div>
+
+  <div class="cocktails-grid">
+    <div class="cocktail-card">
+      <div class="cocktail-img" style="background-color:#f5e8e0">🥂</div>
+      <div class="cocktail-body">
+        <div class="cocktail-cat">Verrines</div>
+        <div class="cocktail-name">Verrine saumon & avocat</div>
+        <div class="cocktail-desc">Mousse d'avocat, saumon fumé Label Rouge, crème citronnée et œufs de truite. Élégant et iodé.</div>
+        <div class="cocktail-footer">
+          <div class="cocktail-prix">18,00 € <small>/ 10 pièces</small></div>
+          <div class="qty-control compact">
+            <button class="qty-btn" onclick="changeQty('verrine-saumon','Verrine saumon & avocat (×10)',18.00,-1)">−</button>
+            <span class="qty-display" id="qty-verrine-saumon">0</span>
+            <button class="qty-btn" onclick="changeQty('verrine-saumon','Verrine saumon & avocat (×10)',18.00,1)">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cocktail-card">
+      <div class="cocktail-img" style="background-color:#e8f0e0">🌿</div>
+      <div class="cocktail-body">
+        <div class="cocktail-cat">Verrines</div>
+        <div class="cocktail-name">Verrine betterave & chèvre</div>
+        <div class="cocktail-desc">Betterave chioggia marinée, fromage de chèvre frais, miel de fleurs et noix concassées. Un équilibre sucré-salé parfait.</div>
+        <div class="cocktail-footer">
+          <div class="cocktail-prix">16,00 € <small>/ 10 pièces</small></div>
+          <div class="qty-control compact">
+            <button class="qty-btn" onclick="changeQty('verrine-betterave','Verrine betterave & chèvre (×10)',16.00,-1)">−</button>
+            <span class="qty-display" id="qty-verrine-betterave">0</span>
+            <button class="qty-btn" onclick="changeQty('verrine-betterave','Verrine betterave & chèvre (×10)',16.00,1)">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cocktail-card">
+      <div class="cocktail-img" style="background-color:#faf0e0">🍞</div>
+      <div class="cocktail-body">
+        <div class="cocktail-cat">Canapés</div>
+        <div class="cocktail-name">Canapés foie gras & figue</div>
+        <div class="cocktail-desc">Blinis moelleux, bloc de foie gras du Périgord, confiture de figue maison et fleur de sel de Guérande.</div>
+        <div class="cocktail-footer">
+          <div class="cocktail-prix">24,00 € <small>/ 10 pièces</small></div>
+          <div class="qty-control compact">
+            <button class="qty-btn" onclick="changeQty('canape-foiegras','Canapés foie gras & figue (×10)',24.00,-1)">−</button>
+            <span class="qty-display" id="qty-canape-foiegras">0</span>
+            <button class="qty-btn" onclick="changeQty('canape-foiegras','Canapés foie gras & figue (×10)',24.00,1)">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cocktail-card">
+      <div class="cocktail-img" style="background-color:#e0f0f8">🦐</div>
+      <div class="cocktail-body">
+        <div class="cocktail-cat">Amuse-bouches</div>
+        <div class="cocktail-name">Bouchées crevettes thaï</div>
+        <div class="cocktail-desc">Mini-coupelles de riz croustillant, crevette tigrée marinée, citron vert et coriandre fraîche. Une explosion de fraîcheur en une bouchée.</div>
+        <div class="cocktail-footer">
+          <div class="cocktail-prix">20,00 € <small>/ 10 pièces</small></div>
+          <div class="qty-control compact">
+            <button class="qty-btn" onclick="changeQty('bouchee-crevette','Bouchées crevettes thaï (×10)',20.00,-1)">−</button>
+            <span class="qty-display" id="qty-bouchee-crevette">0</span>
+            <button class="qty-btn" onclick="changeQty('bouchee-crevette','Bouchées crevettes thaï (×10)',20.00,1)">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cocktail-card">
+      <div class="cocktail-img" style="background-color:#f5e8d0">🧀</div>
+      <div class="cocktail-body">
+        <div class="cocktail-cat">Amuse-bouches</div>
+        <div class="cocktail-name">Gougères fromagères</div>
+        <div class="cocktail-desc">Choux dorés au comté, cœur fondant de morbier. Servis tièdes pour une réception chic et conviviale.</div>
+        <div class="cocktail-footer">
+          <div class="cocktail-prix">14,00 € <small>/ 10 pièces</small></div>
+          <div class="qty-control compact">
+            <button class="qty-btn" onclick="changeQty('gougere','Gougères fromagères (×10)',14.00,-1)">−</button>
+            <span class="qty-display" id="qty-gougere">0</span>
+            <button class="qty-btn" onclick="changeQty('gougere','Gougères fromagères (×10)',14.00,1)">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cocktail-card">
+      <div class="cocktail-img" style="background-color:#e8e0f5">🍄</div>
+      <div class="cocktail-body">
+        <div class="cocktail-cat">Verrines</div>
+        <div class="cocktail-name">Verrine champignons & truffe</div>
+        <div class="cocktail-desc">Crème de champignons Paris et cèpes, huile de truffe noire, éclats de noisette. Un luxe abordable.</div>
+        <div class="cocktail-footer">
+          <div class="cocktail-prix">22,00 € <small>/ 10 pièces</small></div>
+          <div class="qty-control compact">
+            <button class="qty-btn" onclick="changeQty('verrine-truffe','Verrine champignons & truffe (×10)',22.00,-1)">−</button>
+            <span class="qty-display" id="qty-verrine-truffe">0</span>
+            <button class="qty-btn" onclick="changeQty('verrine-truffe','Verrine champignons & truffe (×10)',22.00,1)">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BOISSONS ── -->
+<section id="boissons" class="page-section boissons-section">
+  <div class="section-header">
+    <div class="section-eyebrow">Rafraîchissements</div>
+    <h2 class="section-title">Nos <em>Boissons</em></h2>
+    <p class="section-desc">Sélectionnez les boissons selon votre nombre de convives. Ajustez les quantités à la pièce ou à la bouteille.</p>
+  </div>
+
+  <div class="boissons-grid">
+    <div class="boisson-card">
+      <div class="boisson-icon">💧</div>
+      <div class="boisson-info">
+        <div class="boisson-name">Eau plate 50cl</div>
+        <div class="boisson-prix">1,50 € / unité</div>
+      </div>
+      <div class="qty-control">
+        <button class="qty-btn" onclick="changeQty('eau-plate','Eau plate 50cl',1.50,-1)">−</button>
+        <span class="qty-display editable" id="qty-eau-plate" contenteditable="true" onblur="onQtyBlur(this,'eau-plate','Eau plate 50cl',1.50)" onkeydown="onQtyKey(event,this,'eau-plate','Eau plate 50cl',1.50)">0</span>
+        <button class="qty-btn" onclick="changeQty('eau-plate','Eau plate 50cl',1.50,1)">+</button>
+      </div>
+    </div>
+    <div class="boisson-card">
+      <div class="boisson-icon">🫧</div>
+      <div class="boisson-info">
+        <div class="boisson-name">Eau gazeuse 50cl</div>
+        <div class="boisson-prix">1,80 € / unité</div>
+      </div>
+      <div class="qty-control">
+        <button class="qty-btn" onclick="changeQty('eau-gazeuse','Eau gazeuse 50cl',1.80,-1)">−</button>
+        <span class="qty-display editable" id="qty-eau-gazeuse" contenteditable="true" onblur="onQtyBlur(this,'eau-gazeuse','Eau gazeuse 50cl',1.80)" onkeydown="onQtyKey(event,this,'eau-gazeuse','Eau gazeuse 50cl',1.80)">0</span>
+        <button class="qty-btn" onclick="changeQty('eau-gazeuse','Eau gazeuse 50cl',1.80,1)">+</button>
+      </div>
+    </div>
+    <div class="boisson-card">
+      <div class="boisson-icon">🍊</div>
+      <div class="boisson-info">
+        <div class="boisson-name">Jus de fruit 25cl</div>
+        <div class="boisson-prix">2,50 € / unité</div>
+      </div>
+      <div class="qty-control">
+        <button class="qty-btn" onclick="changeQty('jus-fruit','Jus de fruit 25cl',2.50,-1)">−</button>
+        <span class="qty-display editable" id="qty-jus-fruit" contenteditable="true" onblur="onQtyBlur(this,'jus-fruit','Jus de fruit 25cl',2.50)" onkeydown="onQtyKey(event,this,'jus-fruit','Jus de fruit 25cl',2.50)">0</span>
+        <button class="qty-btn" onclick="changeQty('jus-fruit','Jus de fruit 25cl',2.50,1)">+</button>
+      </div>
+    </div>
+    <div class="boisson-card">
+      <div class="boisson-icon">🍷</div>
+      <div class="boisson-info">
+        <div class="boisson-name">Vin blanc 75cl</div>
+        <div class="boisson-prix">18,00 € / bouteille</div>
+      </div>
+      <div class="qty-control">
+        <button class="qty-btn" onclick="changeQty('vin-blanc','Vin blanc 75cl',18.00,-1)">−</button>
+        <span class="qty-display editable" id="qty-vin-blanc" contenteditable="true" onblur="onQtyBlur(this,'vin-blanc','Vin blanc 75cl',18.00)" onkeydown="onQtyKey(event,this,'vin-blanc','Vin blanc 75cl',18.00)">0</span>
+        <button class="qty-btn" onclick="changeQty('vin-blanc','Vin blanc 75cl',18.00,1)">+</button>
+      </div>
+    </div>
+    <div class="boisson-card">
+      <div class="boisson-icon">🍾</div>
+      <div class="boisson-info">
+        <div class="boisson-name">Champagne brut 75cl</div>
+        <div class="boisson-prix">32,00 € / bouteille</div>
+      </div>
+      <div class="qty-control">
+        <button class="qty-btn" onclick="changeQty('champagne','Champagne brut 75cl',32.00,-1)">−</button>
+        <span class="qty-display editable" id="qty-champagne" contenteditable="true" onblur="onQtyBlur(this,'champagne','Champagne brut 75cl',32.00)" onkeydown="onQtyKey(event,this,'champagne','Champagne brut 75cl',32.00)">0</span>
+        <button class="qty-btn" onclick="changeQty('champagne','Champagne brut 75cl',32.00,1)">+</button>
+      </div>
+    </div>
+    <div class="boisson-card">
+      <div class="boisson-icon">☕</div>
+      <div class="boisson-info">
+        <div class="boisson-name">Café & Thé (×10)</div>
+        <div class="boisson-prix">8,00 € / lot</div>
+      </div>
+      <div class="qty-control">
+        <button class="qty-btn" onclick="changeQty('cafe-the','Café & Thé (×10)',8.00,-1)">−</button>
+        <span class="qty-display editable" id="qty-cafe-the" contenteditable="true" onblur="onQtyBlur(this,'cafe-the','Café & Thé (×10)',8.00)" onkeydown="onQtyKey(event,this,'cafe-the','Café & Thé (×10)',8.00)">0</span>
+        <button class="qty-btn" onclick="changeQty('cafe-the','Café & Thé (×10)',8.00,1)">+</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICE ── -->
+<section id="service" class="page-section service-section">
+  <div class="section-header">
+    <div class="section-eyebrow">Options</div>
+    <h2 class="section-title">Service & <em>Prestations</em></h2>
+    <p class="section-desc">Confiez-nous l'intégralité de votre événement avec notre service clé en main.</p>
+  </div>
+  <div class="service-inner">
+    <div class="service-card" onclick="toggleService('maitre',this,85)">
+      <div class="item-check service-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+      <div class="service-icon">🎩</div>
+      <div class="service-name">Maître d'Hôtel</div>
+      <div class="service-desc">Un professionnel dédié à votre événement. Accueil des invités, service à table, gestion des imprévus — vous n'avez qu'à profiter.</div>
+      <div class="service-price">+ 85 € / service</div>
+    </div>
+    <div class="service-card" onclick="toggleService('livraison',this,0)">
+      <div class="item-check service-check"><svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg></div>
+      <div class="service-icon">🚐</div>
+      <div class="service-name">Livraison incluse</div>
+      <div class="service-desc">Livraison en Île-de-France incluse dans votre commande. Nos équipes arrivent avec tout le matériel de service nécessaire.</div>
+      <div class="service-price free">Offert ✓</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AVIS CLIENTS ── -->
+<section id="avis" class="avis-section">
+  <div class="section-header">
+    <div class="section-eyebrow" style="color:var(--or)">Ils en parlent mieux que nous</div>
+    <h2 class="section-title" style="color:white">Témoignages <em>clients</em></h2>
+  </div>
+  <div class="avis-slider-wrap">
+    <div class="avis-track" id="avisTrack">
+
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« Une prestation irréprochable pour notre séminaire de 120 personnes. Les menus étaient frais, élégants et servis avec un soin remarquable. Nos collaborateurs en parlent encore ! »</p>
+        <div class="avis-author">
+          <div class="avis-avatar">MR</div>
+          <div><strong>Marie Rousseau</strong><br><small>Directrice RH — BNP Paribas</small></div>
+        </div>
+      </div>
+
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« Le menu Océan a été un vrai coup de cœur. La fraîcheur des produits était évidente dès la première bouchée. Le service en ligne est simple, rapide et le site est magnifique. »</p>
+        <div class="avis-author">
+          <div class="avis-avatar">TC</div>
+          <div><strong>Thomas Chevallier</strong><br><small>Office Manager — Capgemini</small></div>
+        </div>
+      </div>
+
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« Nous avons commandé les pièces cocktails pour notre lancement produit. Les verrines foie gras et truffe ont fait sensation. Un niveau gastronomique à un prix très raisonnable. »</p>
+        <div class="avis-author">
+          <div class="avis-avatar">SB</div>
+          <div><strong>Sophie Bernard</strong><br><small>Event Manager — L'Oréal</small></div>
+        </div>
+      </div>
+
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« Le maître d'hôtel était d'un professionnalisme exemplaire. Discret, attentionné, il a anticipé chaque besoin. Nous faisons appel aux Foodelles pour tous nos événements désormais. »</p>
+        <div class="avis-author">
+          <div class="avis-avatar">AL</div>
+          <div><strong>Antoine Leblanc</strong><br><small>PDG — Startup Tech Paris</small></div>
+        </div>
+      </div>
+
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« Menu Veggie commandé pour 60 personnes lors d'un congrès. Aucune approximation dans les assiettes — tous les convives, même les non-végétariens, ont été conquis. Bravo ! »</p>
+        <div class="avis-author">
+          <div class="avis-avatar">CL</div>
+          <div><strong>Camille Laurent</strong><br><small>Chargée de projets — Sanofi</small></div>
+        </div>
+      </div>
+
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« Troisième année consécutive que nous faisons appel aux Foodelles pour notre convention annuelle. La constance dans la qualité est remarquable. Nos 200 invités sont toujours ravis. »</p>
+        <div class="avis-author">
+          <div class="avis-avatar">PD</div>
+          <div><strong>Philippe Durand</strong><br><small>Directeur Général — Renault Group</small></div>
+        </div>
+      </div>
+
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« Le menu Terroir m'a rappelé les repas de famille de mon enfance. Les produits sont locaux, authentiques. On sent vraiment le soin apporté à chaque préparation. Merci infiniment. »</p>
+        <div class="avis-author">
+          <div class="avis-avatar">NF</div>
+          <div><strong>Nathalie Fontaine</strong><br><small>Responsable achats — Total Énergies</small></div>
+        </div>
+      </div>
+
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« Commande passée le matin pour une réunion le midi — livraison ponctuelle, présentation soignée, plats délicieux. Les Foodelles ont sauvé notre déjeuner client de dernière minute ! »</p>
+        <div class="avis-author">
+          <div class="avis-avatar">JM</div>
+          <div><strong>Julien Martin</strong><br><small>Associé — Cabinet de conseil</small></div>
+        </div>
+      </div>
+
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« Nous avons opté pour le menu Fitness pour notre team building sportif. Idéal ! Léger, savoureux, sans lourdeur — tout le monde a été surpris par la qualité des préparations. »</p>
+        <div class="avis-author">
+          <div class="avis-avatar">ER</div>
+          <div><strong>Élise Renard</strong><br><small>DRH — Bouygues Construction</small></div>
+        </div>
+      </div>
+
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« Le site est d'une simplicité d'utilisation remarquable. En 5 minutes, notre commande pour 80 personnes était bouclée. Les menus personnalisés sont une vraie valeur ajoutée. »</p>
+        <div class="avis-author">
+          <div class="avis-avatar">LV</div>
+          <div><strong>Laura Vidal</strong><br><small>Office Manager — AXA France</small></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="avis-controls">
+      <button class="avis-btn" onclick="slideAvis(-1)" aria-label="Précédent">←</button>
+      <div class="avis-dots" id="avisDots"></div>
+      <button class="avis-btn" onclick="slideAvis(1)" aria-label="Suivant">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-text">
+      <div class="section-eyebrow" style="color:var(--or)">Demande personnalisée</div>
+      <h2 class="section-title" style="color:white;text-align:left">Un projet sur <em>mesure</em> ?</h2>
+      <p style="color:rgba(255,255,255,.6);margin-top:16px;font-size:15px;line-height:1.7">Séminaire, mariage, fête d'entreprise… Pour toute demande spécifique ou commande importante, notre équipe vous répond sous 24h.</p>
+      <div class="contact-info-list">
+        <div class="contact-info-item">📍 Issy-les-Moulineaux (92) — Île-de-France</div>
+        <div class="contact-info-item">📞 01 XX XX XX XX</div>
+        <div class="contact-info-item">✉ contact@lesfoodelles.fr</div>
+      </div>
+    </div>
+    <form class="contact-form" id="contactForm" onsubmit="submitForm(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Prénom & Nom</label>
+          <input type="text" name="nom_complet" placeholder="Marie Dupont" required>
+        </div>
+        <div class="form-group">
+          <label>Entreprise</label>
+          <input type="text" name="entreprise" placeholder="Votre société">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="marie@entreprise.fr" required>
+        </div>
+        <div class="form-group">
+          <label>Téléphone</label>
+          <input type="tel" name="telephone" placeholder="06 12 34 56 78">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Type d'événement</label>
+          <select name="type_evenement">
+            <option>Cocktail d'entreprise</option>
+            <option>Séminaire</option>
+            <option>Repas assis</option>
+            <option>Mariage</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Nombre de convives</label>
+          <input type="number" name="nombre_convives" placeholder="ex : 50">
+        </div>
+      </div>
+      <div class="form-group full">
+        <label>Votre message</label>
+        <textarea name="message" placeholder="Décrivez votre projet, la date, le lieu et vos exigences particulières…"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Envoyer ma demande →</button>
+    </form>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="logo-main">les food<em>e</em>lles</div>
+      <div class="logo-tagline">Le goût du partage</div>
+    </div>
+    <div class="footer-links">
+      <a href="#menus">Menus</a>
+      <a href="#cocktails">Cocktails</a>
+      <a href="#service">Service</a>
+      <a href="#contact">Devis</a>
+    </div>
+    <!-- EcoVadis dans le footer -->
+    <div class="footer-ecovadis">
+      <img src="images/ecovadis-silver.png" alt="Certifié EcoVadis Silver"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+           class="footer-ecovadis-img">
+      <div class="footer-ecovadis-fallback" style="display:none">
+        <span>🌿</span>
+        <div><strong>EcoVadis</strong> Silver</div>
+      </div>
+    </div>
+    <div class="footer-copy">
+      © 2025 Les Foodelles · Traiteur Île-de-France · Issy-les-Moulineaux<br>
+      <small>ECOVADIS Silver · Tous droits réservés</small>
+    </div>
+  </div>
+</footer>
+
+<!-- ── OVERLAY ── -->
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<!-- ── SIDEBAR PANIER ── -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-title">Mon panier</div>
+    <button class="btn-close" onclick="toggleSidebar()">✕</button>
+  </div>
+  <div class="sidebar-body" id="sidebarBody">
+    <div class="panier-vide" id="panierVide">
+      <div class="panier-vide-icon">🛒</div>
+      <p>Votre panier est vide.</p>
+      <small>Composez votre menu ci-dessus !</small>
+    </div>
+    <div id="panierLines"></div>
+  </div>
+  <div class="sidebar-footer">
+    <div class="total-row"><span>Sous-total HT</span><span id="totalHT">0,00 €</span></div>
+    <div class="total-row"><span>TVA (10%)</span><span id="totalTVA">0,00 €</span></div>
+    <div class="sidebar-total">
+      <span class="total-label-big">Total TTC</span>
+      <span class="total-ttc" id="totalTTC">0,00 €</span>
+    </div>
+    <button class="btn-commander" onclick="commander()">Finaliser la commande →</button>
+  </div>
+</div>
+
+<!-- ── TOAST ── -->
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
