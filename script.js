@@ -1,6 +1,6 @@
 // 1. CONFIGURATION AIRTABLE
 const AIRTABLE_TOKEN = "patARnAOju3cuwlJJ"; 
-const BASE_ID = "app4M0SphwazGogTf"; 
+const BASE_ID = "app4MOSphwazGogTf"; 
 const TABLE_NAME = "Table 1"; 
 
 // 2. RÉCUPÉRATION DES DONNÉES ET LANCEMENT GLOBAL
