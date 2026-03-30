@@ -1,5 +1,5 @@
 // 1. CONFIGURATION AIRTABLE (Vérifie tes infos)
-const AIRTABLE_TOKEN = "patzsYJPVFm5xiZJ5"; 
+const AIRTABLE_TOKEN = "patARnAOju3cuwLJJ"; 
 const BASE_ID = "app4MOSphwazGogTf"; 
 const TABLE_NAME = "Table 1"; 
 
@@ -8,8 +8,10 @@ async function initDynamicContent() {
     const url = "https://corsproxy.io/?https://api.airtable.com/v0/app4M0SphwazGogTf/Table%201";
     try {
         const response = await fetch(url, {
-            headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` }
-        });
+            headers: {
+    "Authorization": "Bearer patARnAOju3cuwLJJ", // Il faut bien un espace après Bearer
+    "Content-Type": "application/json"
+}
         const data = await response.json();
         const records = data.records.map(r => ({ id: r.id, ...r.fields }));
 
