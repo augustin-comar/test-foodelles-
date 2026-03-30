@@ -1,78 +1,42 @@
-// 1. CONFIGURATION AIRTABLE (Vérifie tes infos)
-const AIRTABLE_TOKEN = "patARnAOju3cuwLJJ"; 
-const BASE_ID = "app4MOSphwazGogTf"; 
+// 1. CONFIGURATION AIRTABLE
+const AIRTABLE_TOKEN = "patARnAOju3cuwlJJ"; 
+const BASE_ID = "app4M0SphwazGogTf"; 
 const TABLE_NAME = "Table 1"; 
 
-// 2. RÉCUPÉRATION ET TRI DES DONNÉES
+// 2. RÉCUPÉRATION DES DONNÉES ET LANCEMENT GLOBAL
 async function initDynamicContent() {
-    const url = "https://corsproxy.io/?https://api.airtable.com/v0/app4M0SphwazGogTf/Table%201";
+    const url = `https://corsproxy.io/?https://api.airtable.com/v0/${BASE_ID}/Table%201`;
     try {
         const response = await fetch(url, {
             headers: {
-                "Authorization": "Bearer patARnAOju3cuwlJJ",
+                "Authorization": `Bearer ${AIRTABLE_TOKEN}`,
                 "Content-Type": "application/json"
             }
-        }); // L'accolade et la parenthèse doivent être ICI
+        });
+
+        if (!response.ok) throw new Error(`Erreur Airtable: ${response.status}`);
 
         const data = await response.json();
         const records = data.records.map(r => ({ id: r.id, ...r.fields }));
 
-        // On sépare les Menus du reste
         const menus = records.filter(item => item.Type === 'Menu');
         const toutLeReste = records.filter(item => item.Type !== 'Menu');
 
         console.log("Données chargées :", { menus, toutLeReste });
 
-        // Mise à jour visuelle
+        // Mise à jour visuelle des menus Airtable
         updateMenusOnPage(menus, toutLeReste);
         
-        // Optionnel : Si tu as des sections Cocktails/Boissons
-        updateExtraSections(toutLeReste);
-
     } catch (error) {
         console.error("Erreur Airtable:", error);
     }
 }
 
-// 3. INJECTION DANS LES CARTES DE MENU
-function updateMenusOnPage(menus, toutLeReste) {
-    menus.forEach(menu => {
-        // On cible la carte par l'attribut data-menu (ex: veggie, ocean...)
-        const menuSlug = menu.Nom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        const card = document.querySelector(`.menu-card[data-menu="${menuSlug}"]`);
-        
-        if (card) {
-            // Mise à jour du prix
-            const priceTag = card.querySelector('.prix-fixe');
-            if (priceTag) priceTag.textContent = `${menu.Prix} €`;
-
-            // Mise à jour de la liste des plats
-            const list = card.querySelector('.menu-items-list');
-            if (list) {
-                list.innerHTML = ''; // On nettoie l'ancien texte
-
-                // On récupère les éléments liés à ce menu
-                const elementsDuMenu = toutLeReste.filter(p => 
-                    p["Menu Parent"] && p["Menu Parent"].includes(menu.id)
-                );
-
-                // On trie pour afficher dans l'ordre : Entrée, puis Plat, puis Dessert
-                const ordre = ["Entrée", "Plat", "Dessert"];
-                elementsDuMenu.sort((a, b) => ordre.indexOf(a.Type) - ordre.indexOf(b.Type));
-
-                elementsDuMenu.forEach(item => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `<strong>${item.Type} :</strong> ${item.Nom}`;
-                    list.appendChild(li);
-                });
-            }
-        }
-    });
-}
-
-// On lance le chargement quand la page est prête
+// 3. LA SEULE ET UNIQUE FONCTION AU CHARGEMENT
 document.addEventListener('DOMContentLoaded', () => {
-    if (typeof init === "function") init(); // Lance tes autres fonctions (panier, etc.)
+    // On lance d'abord les fonctions de ton panier/slider (ton ancien code)
+    init(); 
+    // Puis on charge les données dynamiques Airtable
     initDynamicContent();
 });
 // ─────────────────────────────────────────────
