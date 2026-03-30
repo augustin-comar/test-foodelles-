@@ -9,9 +9,11 @@ async function initDynamicContent() {
     try {
         const response = await fetch(url, {
             headers: {
-    "Authorization": "Bearer patARnAOju3cuwLJJ", // Il faut bien un espace après Bearer
-    "Content-Type": "application/json"
-}
+                "Authorization": "Bearer patARnAOju3cuwlJJ",
+                "Content-Type": "application/json"
+            }
+        }); // L'accolade et la parenthèse doivent être ICI
+
         const data = await response.json();
         const records = data.records.map(r => ({ id: r.id, ...r.fields }));
 
